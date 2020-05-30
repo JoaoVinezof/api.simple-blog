@@ -8,8 +8,15 @@ class Home extends BaseController
 
 	public function index()
 	{
+	    if (ENVIRONMENT === 'development') {
+	        $phpVersion = phpversion();
+        } else {
+            $phpVersion = 'secret';
+        }
+
         return $this->respond([
-            'status' => 'on'
+            'status' => 'on',
+            'php_version' => $phpVersion
         ]);
 	}
 
